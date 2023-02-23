@@ -1,0 +1,59 @@
+= HTMX Sample Application
+
+Small proof-of-concept toying with
+
+* https://htmx.org[HTMX]
+* https://htmx.org[HyperScript]
+* https://github.com/Kotlin/kotlinx.html[Kotlin HTML Builder]
+* https://jooby.io[Jooby]
+* https://bulma.io/documentation/[Bulma CSS]
+
+## Quickstart
+```
+gradle run
+```
+
+Then the application is available at http://localhost:8081
+
+## Design Goals
+Strong focus on abstraction, modularity and reusability using common Kotlin/JVM means.
+
+* Component-library using Kotlin classes and functions
+* Extension-functions to make HTMX and HyperScript-functionality available in the HTML builder
+* Sections and classes are used for the different sections and areas of the page
+
+Normal Java-means of code-sharing and structuring can be used, for example a common component-library as a plain JAR-file.
+
+Using well-known technology (for the backend-dev) for the frontend is imho the biggest advantage of the HTMX-stack, if you can even call it a stack.
+
+It's hardly more than serializing data to HTML, rather than JSON with Hypermedia-links, assuming there's a component-library taking care of the styling.
+
+## Observations
+
+### HTMX
+* Worth reading through the documentation once to get the idea
+* Then it's easy to use, but also quite static
+** e.g. requires extension to use variables from events in requests
+** but extensions are very easy to write and load
+
+### HyperScript
+* Very powerful and easy to read
+* But writing is sometimes tricky
+** Words that seem unnecessary are important for the parser
+* All small Javascript-snippets can probably be expressed in Hyperscript quite easily
+
+### Kotlin HTML Builder
+* Not a fan. It's easy to quickly create a full HTML-page, but everything beyond this is hard
+* HTML-fragments are not coming out of the box and require custom extensions
+* The vast amount of extension functions makes it hard to extend
+** It's easy to be in the wrong scope
+* Another PoC with https://htmlflow.org[HTML-Flow] would be interesting to see the differences
+
+### Jooby / Kooby
+* Super fast, super easy. Like it
+* Really easy to separate routes into modules and mix and match them
+
+### Bulma
+* Nice to see something new after a lot of Bootstrap. But end-of-the day, they are also quite similar
+* A few more helpers would be nice, like just put something to the right or position absolute bottom left
+
